@@ -78,13 +78,8 @@ const SideDrawer = ({onClose, isOpen}: childrenProps) => {
           </Box>
           </DrawerHeader>
           <DrawerBody>
-          <Box mt={4} pt={4}>
-            <Button bg="#000" color="white" borderRadius={2} py={5} _hover={{ bg: '#171923' }} leftIcon={<MdAdd />}>
-              Create New Trip
-            </Button>
-          </Box>
             
-          <Box pl={8} pt={8}>
+          <Box pl={8} pt={2}>
             {menuItems}
           </Box>
             {/* <Box pt='34px'>

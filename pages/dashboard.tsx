@@ -267,7 +267,7 @@ const Dashboard: NextPageWithLayout = () => {
        <Navbar page="Dashboard" />
        <Box px={6} mt={8}>
        <Text mb={4} fontSize='16px' fontWeight='500'>Ride Statistics</Text>
-        <Grid templateColumns='repeat(4, 1fr)' gap={6}>
+        <Grid templateColumns={{base:'repeat(1, 1fr)', lg: 'repeat(4, 1fr)', md: 'repeat(2, 1fr)'}} gap={6}>
             <GridItem w='100%' h='24' bg='white'  
                borderRadius={20} 
                boxShadow= 'rgba(170, 170, 170, 0.20) 2px 2px 16px 0'>
@@ -289,8 +289,8 @@ const Dashboard: NextPageWithLayout = () => {
                  <DashboardCard icon={IoCloseCircleOutline} title='Cancelled Trips' number={cancelledTrips?.length.toString() || '0'} color='#C53030' />
                </GridItem>
           </Grid>
-          <Grid templateColumns='repeat(4, 1fr)' gap={6} mt={8}>
-            <GridItem w='100%' h='320' bg='white'
+          <Grid templateColumns={{base:'repeat(1, 1fr)',  md: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)'}} gap={6} mt={8}>
+            <GridItem w='100%' h={{base: 360, md: 350, lg: 320}} bg='white'
                borderRadius={20} 
                boxShadow= 'rgba(170, 170, 170, 0.20) 2px 2px 16px 0'>
                 <DriverStats online={availableDrivers?.length} drivers={drivers?.length} />
@@ -315,12 +315,12 @@ const Dashboard: NextPageWithLayout = () => {
                </GridItem>
                <GridItem w='100%' h='320' bg='white' py='6' 
                borderRadius={20} 
-               colSpan={2}
+               colSpan={{md:2}}
                boxShadow= 'rgba(170, 170, 170, 0.20) 2px 2px 16px 0'>
                  <RideStatus graphData={graphData} graphData2={graphData2}/>
                </GridItem>
           </Grid>
-          <Text mt={12} mb={4} fontSize='16px' fontWeight='500'>Trip Requests</Text>
+          <Text mt={{base: 12, md: 32, lg: 12}} mb={4} fontSize='16px' fontWeight='500'>Trip Requests</Text>
           <Grid minWidth='90%' h='auto' bg='white'
                py={4}
                px={4}

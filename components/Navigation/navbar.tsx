@@ -31,9 +31,10 @@ const Navbar = ({page}: ChildrenProps) => {
     //  pt={{base: 2, md: 4}}
      px={{md: 3}}
     >
-      <Flex  py={{base: 2, md: 3}} minWidth='max-content' alignItems='center' gap='2'>
+      <Flex  py={{base: 2, md: 3}}  mb={{base: 4, md: 0}} minWidth='max-content' alignItems='center' gap='2'>
+      <Spacer display={{base: 'none', md: 'inline', lg: 'none'}}/>
         <Box p='2'>
-           <Text fontSize='18px' fontWeight='500'>{page}</Text>
+           <Text  display={{base: 'none', md: 'inline'}} fontSize='18px' fontWeight='500'>{page}</Text>
         </Box>
         <Spacer />
         
