@@ -215,7 +215,7 @@ const RiderModal = ({onClose, isOpen, body, id, data }: ChildrenProps) => {
       <AppInput ref={inputElement} icon={<MdExposurePlus1 color='gray.300' size='20' />} type="text" label="Index" func={handleIndexChange}/>
     </Box> 
     <Box py={2} display={'flex'} gap={'6px'}>
-      <AppInput icon={<MdSubject color='gray.300' size='20' />} type="text" label="Last Name" func={handleDescriptionChange}/>
+      <AppInput icon={<MdSubject color='gray.300' size='20' />} type="text" label="Description" func={handleDescriptionChange}/>
     </Box>
     <Box py={2} gap={'6px'}>
       <AppInput icon={<MdPhotoCamera color='gray.300' size='20' />} type="file" label="Upload Advert Image" func={handleImageUrlChange}/>
