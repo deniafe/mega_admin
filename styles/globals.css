@@ -24,3 +24,21 @@ a {
     background: black;
   }
 }
+
+::-webkit-scrollbar {
+  width: 2px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fafafa;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ebebeb;
+  border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: transparent;
+}
