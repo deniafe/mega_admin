@@ -111,7 +111,7 @@ const Riders: NextPageWithLayout = () => {
           </Grid>
        </Box>
       </Box>
-      <AppModal onClose={onClose} isOpen={isOpen} body={modalBody} />
+      {/* <AppModal onClose={onClose} isOpen={isOpen} body={modalBody} /> */}
     </>
   )
 
