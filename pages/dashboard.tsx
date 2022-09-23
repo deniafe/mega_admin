@@ -305,7 +305,7 @@ const Dashboard: NextPageWithLayout = () => {
                 </Box>
 
                 <Box
-                w='100%' h='24' bg='white'  
+                w='100%' h='24' bg='#fff'  
                 mt={4}
                 borderRadius={20} 
                 boxShadow= 'rgba(170, 170, 170, 0.20) 2px 2px 16px 0'>
