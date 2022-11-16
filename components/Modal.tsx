@@ -3,6 +3,7 @@ import axios from 'axios'
 import React, { ReactNode, useEffect, useState } from 'react'
 import { MdFingerprint, MdOutlineEmail, MdPerson, MdPhone, MdTimeToLeave, MdWarningAmber } from 'react-icons/md'
 import AppInput from './AppInput'
+import TypeSelect from './TypeSelect'
 
 
 type driver = {
@@ -60,7 +61,6 @@ const AppModal = ({onClose, isOpen, body, modalType, id, data }: ChildrenProps) 
   const handlePasswordChange = (event: {target: {value: string}}) =>  {
     setPassword(event.target.value)
   }
-
   
   const handleFirstNameChange = (event: {target: {value: string}}) =>  {
     console.log('First Name', event.target.value )
@@ -216,7 +216,7 @@ const AppModal = ({onClose, isOpen, body, modalType, id, data }: ChildrenProps) 
         <AppInput icon={<MdOutlineEmail color='gray.300' size='20' />} type="email" label="Email" func={handleEmailChange}/>
       </Box> 
       <Box py={2} display={'flex'} gap={'6px'}>
-        <AppInput icon={<MdTimeToLeave color='gray.300' size='20' />} type="text" label="Mega Type" func={handleTypeChange}/>
+        <TypeSelect label='Select Type' func={handleTypeChange}/>
         <AppInput icon={<MdTimeToLeave color='gray.300' size='20' />} type="text" label="Vehicle Number" func={handleVehicleNumberChange}/>
       </Box> 
       <Box py={2} display={'flex'} gap={'6px'}>
@@ -286,7 +286,7 @@ const editDriverBody =  <>
     <AppInput icon={<MdOutlineEmail color='gray.300' size='20' />} type="text" label={email || ''} func={handleEmailChange}/>
   </Box> 
   <Box py={2} display={'flex'} gap={'6px'}>
-    <AppInput icon={<MdTimeToLeave color='gray.300' size='20' />} type="text" label={type || ''} func={handleTypeChange}/>
+    <TypeSelect label={type || ''} func={handleTypeChange}/>
     <AppInput  icon={<MdTimeToLeave color='gray.300' size='20' />} type="text" label={vehicleNumber || ''} func={handleVehicleNumberChange}/>
   </Box> 
   <Box py={2} display={'flex'} gap={'6px'}>

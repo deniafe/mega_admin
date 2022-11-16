@@ -15,7 +15,10 @@ type rider = {
   riderId: string
   firstName: string
   lastName: string
+  email: string
+  password: string
   phone: string
+  membership: string
   imageUrl: string
 }
 

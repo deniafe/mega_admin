@@ -3,13 +3,17 @@ import axios from 'axios'
 import React, { ReactNode, useEffect, useState } from 'react'
 import { MdFingerprint, MdOutlineEmail, MdPerson, MdPhone, MdTimeToLeave, MdWarningAmber } from 'react-icons/md'
 import AppInput from './AppInput'
+import AppSelectInput from './AppSelectInput'
 
 
 type rider = {
   riderId: string
   firstName: string
   lastName: string
+  email: string
+  password: string
   phone: string
+  membership: string
   imageUrl: string
 }
 
@@ -26,7 +30,10 @@ const RiderModal = ({onClose, isOpen, body, id, data }: ChildrenProps) => {
 
   const [firstName, setFirstName] = useState<string>();
   const [lastName, setLastName] = useState<string>(); 
+  const [email, setEmail] = useState<string>();
+  const [password, setPassword] = useState<string>(); 
   const [phone, setPhone] = useState<string>();
+  const [membership, setMembership] = useState<string>();
   const [loading, setLoading] = useState(false)
   const toast = useToast()
 
@@ -51,14 +58,26 @@ const RiderModal = ({onClose, isOpen, body, id, data }: ChildrenProps) => {
     setLastName(event.target.value)
   }
 
+  const handleEmailChange = (event: {target: {value: string}}) =>  {
+    setEmail(event.target.value)
+  }
+
+  const handlePasswordChange = (event: {target: {value: string}}) =>  {
+    setPassword(event.target.value)
+  }
+
   const handlePhoneChange = (event: {target: {value: string}}) =>  {
     setPhone(event.target.value)
+  }
+
+  const handleMembershipChange = (event: {target: {value: string}}) =>  {
+    setMembership(event.target.value)
   }
 
    const handleSubmit = (e: { preventDefault: () => void; }) => {
      e.preventDefault()
      
-     if(!firstName || !lastName || !phone){ 
+     if(!firstName || !lastName || !phone || !password || !email){ 
        return  showMessage({
         title: 'Error',
         message: 'All fields are required',
@@ -73,7 +92,7 @@ const RiderModal = ({onClose, isOpen, body, id, data }: ChildrenProps) => {
 
     console.log('fields', firstName, lastName, phone)
     
-    if(!firstName || !lastName || !phone){
+    if(!firstName || !lastName || !phone || !password || !email){
       return  showMessage({
        title: 'Error',
        message: 'All fields are required',
@@ -89,6 +108,9 @@ const RiderModal = ({onClose, isOpen, body, id, data }: ChildrenProps) => {
       firstName: firstName,
       lastName: lastName,
       phone: phone,
+      password: password,
+      email: email,
+      membership: membership,
       imageUrl: "",
     })
     .then(function (response) {
@@ -110,7 +132,10 @@ const RiderModal = ({onClose, isOpen, body, id, data }: ChildrenProps) => {
     axios.patch('https://us-central1-turing-audio-349909.cloudfunctions.net/api/users/'+ id, {
       firstName: firstName,
       lastName: lastName,
+      password: password,
+      email: email,
       phone: phone,
+      membership: membership,
       imageUrl: "",
     })
     .then(function (response) {
@@ -155,8 +180,15 @@ const RiderModal = ({onClose, isOpen, body, id, data }: ChildrenProps) => {
         <AppInput icon={<MdPerson color='gray.300' size='20' />} type="text" label="Last Name" func={handleLastNameChange}/>
       </Box> 
       <Box py={2} display={'flex'} gap={'6px'}>
-       <AppInput icon={<MdPhone color='gray.300' size='20' />} type="text" label="Phone Nunmber" func={handlePhoneChange}/>
+       <AppInput icon={<MdOutlineEmail color='gray.300' size='20' />} type="text" label="Email" func={handleEmailChange}/>
+       <AppInput icon={<MdFingerprint color='gray.300' size='20' />} type="text" label="Password" func={handlePasswordChange}/>
       </Box> 
+      
+      <Box py={2} display={'flex'} gap={'6px'}>
+       <AppInput icon={<MdPhone color='gray.300' size='20' />} type="text" label="Phone Number" func={handlePhoneChange}/>
+       <AppSelectInput label="Select Membership" func={handleMembershipChange}/>
+      </Box> 
+
     </ModalBody>
     <Center my={6}>
           <Button  
@@ -215,9 +247,14 @@ const editRiderBody =  <>
           <AppInput icon={<MdPerson color='gray.300' size='20' />} type="text" label={lastName} func={handleLastNameChange}/>
         </Box>
         <Box py={2} display={'flex'} gap={'6px'}>
+       <AppInput icon={<MdOutlineEmail color='gray.300' size='20' />} type="text" label={email} func={handleEmailChange}/>
+       <AppInput icon={<MdFingerprint color='gray.300' size='20' />} type="text" label={password} func={handlePasswordChange}/>
+      </Box> 
+        <Box py={2} display={'flex'} gap={'6px'}>
           <AppInput icon={<MdPhone color='gray.300' size='20' />} type="number" label={phone} func={handlePhoneChange}/>
+          <AppSelectInput label={membership} func={handleMembershipChange}/>
         </Box> 
-        
+    
       </ModalBody>
       <Center my={6}>
            <Button 
@@ -238,6 +275,9 @@ const editRiderBody =  <>
 useEffect(() => {
   setFirstName(data?.firstName)
   setLastName(data?.lastName)
+  setEmail(data?.email)
+  setPassword(data?.password)
+  setMembership(data?.membership)
   setPhone(data?.phone)
 
  }, [data]) 

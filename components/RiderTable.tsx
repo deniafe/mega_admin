@@ -18,7 +18,10 @@ type rider = {
   riderId: string
   firstName: string
   lastName: string
+  email: string
+  password: string
   phone: string
+  membership: string
   imageUrl: string
 }
 
@@ -45,8 +48,11 @@ const RidersTable = ({onOpen, ridersData, setModalBody, setId, setData, showMess
       riderId: rider.id,
       firstName: rider.firstName || '',
       lastName: rider.lastName || '',
+      email: rider.email || '',
+      password: rider.password || '',
       rating: rider.rating || 0,
       phone: rider.phone || '',
+      membership: rider.membership || '',
       imageUrl: rider.imageUrl || '',
     }
   })

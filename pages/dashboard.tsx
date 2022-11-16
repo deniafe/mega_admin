@@ -147,16 +147,16 @@ const Dashboard: NextPageWithLayout = () => {
 
   const getTripsGraphData =  () => {
     const cancelledtrips = cancelledTrips?.map(trip => {
-      return {date: trip.created_at.substring(0, 10), status: trip.status}
+      return {date: trip.created_at?.substring(0, 10), status: trip.status}
     })
     const completedtrips = completedTrips?.map(trip => {
-      return {date: trip.created_at.substring(0, 10), status: trip.status}
+      return {date: trip.created_at?.substring(0, 10), status: trip.status}
     })
     const ontrips = onTrips?.map(trip => {
-      return {date: trip.created_at.substring(0, 10), status: trip.status}
+      return {date: trip.created_at?.substring(0, 10), status: trip.status}
     })
     const allTrips = trips?.map(trip => {
-      return {date: trip.created_at.substring(0, 10), status: trip.status}
+      return {date: trip.created_at?.substring(0, 10), status: trip.status}
     })
 
     console.log(cancelledtrips)
